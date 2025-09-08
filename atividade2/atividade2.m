@@ -24,7 +24,7 @@ endfunction
 
 # esses foram os pontos que eu achei que tiveram o resultado mais satisfatório
 A = [95, 45]; # s1, r1
-B = [125, 170]; # s2, r2
+B = [125, 165]; # s2, r2
 
 
 m = (A(2) - 0) / (A(1) - 0);
