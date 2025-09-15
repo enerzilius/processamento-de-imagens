@@ -18,16 +18,14 @@ original = imread('imagem.jpg');
 
 new_image = equalize_histogram(original);
 
-[counts, bins] = imhist(new_image);
-
-bar(bins, counts, 'FaceColor', 'c', 'EdgeColor', 'none');
-xlabel('Gray level (L)');
-ylabel('Pixel count (n)');
+plot(imhist(new_image));
+axis([0 255 0 40000])
+xlabel('Nível de cinza(l)');
+ylabel('Número de Pixels(n)');
 title('Histogram of Equalized Image');
-xlim([0 255]);                        % full gray range
 grid on;
 
-
+imwrite(new_image, 'imagem_equalizada.jpg');
 figure, imshow(new_image);
 
 
