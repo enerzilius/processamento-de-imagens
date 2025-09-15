@@ -21,8 +21,8 @@ new_image = equalize_histogram(original);
 plot(imhist(new_image));
 axis([0 255 0 40000])
 xlabel('Nível de cinza(l)');
-ylabel('Número de Pixels(n)');
-title('Histogram of Equalized Image');
+ylabel('Número de pixels(n)');
+title('Histograma da imagem equalizada');
 grid on;
 
 imwrite(new_image, 'imagem_equalizada.jpg');
