@@ -6,8 +6,8 @@ function new_image = equalize_histogram(image)
   MN = dimensions(1) * dimensions(2);
 
   [counts, x] = imhist(image);
-  nk = (L-1)*counts / MN;
-  sum = cumsum(nk);
+  pr = (L-1)*counts / MN;
+  sum = cumsum(pr);
   s = round(sum);
 
   new_image = s(double(image) + 1);

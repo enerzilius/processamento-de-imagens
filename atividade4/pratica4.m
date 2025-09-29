@@ -30,7 +30,6 @@ sobel_y = [
 ];
 
 m = 3;
-imagemDouble = padarray(im2double(original),  [floor(m/2), floor(m/2)], "replicate");
 
 gx = filter2(sobel_x, imagemDouble);
 gy = filter2(sobel_y, imagemDouble);
@@ -38,8 +37,22 @@ M = abs(gx) + abs(gy);
 
 figure, imshow(M);
 
+laplace_sem = [
+  0, -1, 0;
+  -1, 4, -1;
+  0, -1, 0;
+];
 
+l = filter2(laplace_sem, imagemDouble);
+figure, imshow(l);
 
+laplace_bordas = [
+  -1, -1, -1;
+  -1, 8, -1;
+  -1, -1, -1;
+];
 
+L = filter2(laplace_bordas, imagemDouble);
+figure, imshow(L);
 
 
