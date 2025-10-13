@@ -1,6 +1,6 @@
 pkg load image;
 
-function new_image = equalize_histogram(image)
+function [new_image, s] = equalize_histogram(image)
   L = 256;
   dimensions = size(image);
   MN = dimensions(1) * dimensions(2);
@@ -16,9 +16,18 @@ endfunction
 
 original = imread('imagem.jpg');
 
+[new_image, s] = equalize_histogram(original);
+
+figure, plot(0:255, s);
+xlabel('Nível de cinza original (l)');
+ylabel('Nível de cinza transformado (s)');
+title('Função de transformação de intensidade s(l)');
+axis([0 255 0 255]);
+grid on;
+
 new_image = equalize_histogram(original);
 
-plot(imhist(new_image));
+figure, plot(imhist(new_image));
 axis([0 255 0 40000])
 xlabel('Nível de cinza(l)');
 ylabel('Número de pixels(n)');
