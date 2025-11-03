@@ -4,20 +4,33 @@ image = imread("pratica5.png");
 image = im2double(image);
 
 [M, N] = size(image);
-padded_image = zeros(M*2, N*2);
+P = M*2;
+Q = N*2;
 
-for i = 1:M
-  for j = 1:N
-    padded_image(i, j) = image(i, j);
+transformed = fft2(image, P, Q);
+transformed = fftshift(transformed);
+
+figure, imshow(uint8(abs(transformed)));
+
+D0 = 20;
+D = zeros(P, Q);
+H = zeros(P, Q);
+
+% Compute D(u,v)
+for u = 1:P
+  for v = 1:Q
+    D(u, v) = sqrt(((u-1) - P/2)^2 + ((v-1) - Q/2)^2);
   endfor
 endfor
 
-[x, y] = ndgrid(1:M*2, 1:N*2);
-centralized_image = padded_image .* ((-1) .^ (x+y));
+% Compute H(u,v)
+for u = 1:P
+  for v = 1:Q
+    H(u, v) = e^(-(D(u, v)^2) / (2 * (D0^2)));
+  endfor
+endfor
 
-F = fft2(centralized_image);
+% Apply filter
+G = transformed .* H;
 
-figure, imshow(log(1 + abs(F)), []);
-
-
-
+figure, imshow(H);
