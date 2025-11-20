@@ -1,3 +1,0 @@
-1. Passar o canal intensidade pro domínio da frequência
-2. Aplicar um filtro notch
-3. Arrumar a intensidade 

@@ -6,7 +6,6 @@ figure, imshow(img);
 
 hsv = rgb2hsv(img);
 V = hsv(:,:,3);
-figure, imshow(V);
 
 [M, N] = size(V);
 P = M*2;
@@ -21,7 +20,6 @@ imwrite(uint8(abs(transformed)), "espectro.png");
 
 filtro = imread("filtro.png");
 filtro = (filtro.*200)<=0;
-figure, imshow(filtro);
 
 G = transformed .* filtro;
 
@@ -32,6 +30,10 @@ f = real(f);
 
 V = f(1:M,1:N);
 figure, imshow(V);
+
+gama = 0.7;
+V = V.^gama;
+V = real(V);
 
 hsv(:,:,3) = V;
 final_rgb = hsv2rgb(hsv);
