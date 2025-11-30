@@ -36,6 +36,10 @@ V = V.^gama;
 V = real(V);
 
 hsv(:,:,3) = V;
+
+H = hsv(1,:,:);
+
+
 final_rgb = hsv2rgb(hsv);
 figure, imshow(final_rgb);
 imwrite(final_rgb, "final_result.png");
